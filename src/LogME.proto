@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option java_package = "com.logme.file";
+
+package logme;
+
+service LogME{
+  rpc AddLog(AddLogRequest) returns (AddLogResponse);
+  rpc GetLog(GetLogRequest) returns (GetLogResponse);
+}
+
+message AddLogRequest{
+  string content = 1;
+  string date = 2;
+  string level = 3;
+  LogType type = 4;
+}
+message AddLogResponse{
+  bool success = 1;
+}
+
+message GetLogRequest{
+  string date = 1;
+}
+message GetLogResponse{
+  string content = 1;
+}
+
+
+enum LogType{
+  NONE = 0;
+  SUCCESS = 1;
+  FAILED = 2;
+}
